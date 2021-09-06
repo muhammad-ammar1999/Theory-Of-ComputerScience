@@ -1,0 +1,67 @@
+    	
+        System.out.println("enter input");
+       Scanner sc=new Scanner(System.in);	 
+        String [] test= sc.nextLine().split("\\s+");
+        String [] keyword = {"int","float","String","double","boolean"};
+        String [] operator = {"[-]","[+]","[=]","[;]"};
+       
+        for(int j=0;j < test.length;j++)  {
+            
+        for(int k =0; k<keyword.length;k++){
+        Pattern keywordp = Pattern.compile(keyword[k]);
+        Matcher keymatch = keywordp.matcher(test[j]);
+        boolean m = keymatch.matches();
+         if(m==true){
+          System.out.println("keyword");
+          }
+        }
+        
+        for(int r = 0;r<operator.length;r++){
+        Pattern operatorp = Pattern.compile(operator[r]);
+        Matcher opmatch = operatorp.matcher(test[j]);
+        boolean n = opmatch.matches();
+         if(n==true){
+          System.out.println("operator");
+          }
+        }
+        
+        
+        Pattern intc = Pattern.compile("[+-]?[0-9]+");
+        Matcher intcmatch = intc.matcher(test[j]);
+        boolean b = intcmatch.matches();
+          if(b==true){
+          System.out.println("int constant");
+          }
+        
+        
+        
+        Pattern floatc = Pattern.compile("[+-]?[0-9]*[.][0-9]+");
+        Matcher floatcmatch = floatc.matcher(test[j]);
+          boolean c = floatcmatch.matches();   
+           if(c==true){
+          System.out.println("floatc ");
+          }
+       
+            Pattern identifier = Pattern.compile("([A-Za-z][_]?|_)([A-Za-z0-9]+[_]?)*");
+        Matcher idmatch = identifier.matcher(test[j]);
+           boolean d = idmatch.matches();
+           if(d==true){
+          System.out.println("identifier ");
+          }
+       
+        
+        Pattern charc = Pattern.compile("'(\\\\[tvrnafb\\\\]|[^\\\\'])'");
+        Matcher charcmatch = charc.matcher(test[j]);
+       boolean e = charcmatch.matches();
+            if(e==true){
+          System.out.println("charc ");
+          }
+        
+        Pattern Stringc = Pattern.compile("\".*?\"");
+        Matcher SCmatch = Stringc.matcher(test[j]);
+            boolean f = SCmatch.matches();
+             if(f==true){
+          System.out.println("Stringc ");
+    }
+    }
+ 

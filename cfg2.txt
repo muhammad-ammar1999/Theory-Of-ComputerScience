@@ -1,0 +1,110 @@
+static String []input;
+  static int i=0;
+
+  public static boolean F(){
+  if("a".equals(input[i])){
+         i++;
+        return true;
+    }
+    else if("1".equals(input[i])){
+        i++;
+        return true; 
+    }
+    else return false;
+ }
+  
+  public static boolean op2(){
+     if ("*".equals(input[i])){
+     i++;
+         return true;
+         
+     }
+     else if ("/".equals(input[i])){
+       i++;
+     return true;
+     }
+     else return false;
+ }
+  public static boolean T1(){
+     if (op2()){
+         if (F()){
+             if (T1()){
+          return true; 
+           }
+         }
+ }
+     else return true;
+     return false;
+ }
+  
+ 
+  
+ public static boolean  T() {
+ if (F()){
+     if(T1()) {
+         return true;
+     }
+ }
+
+ return false;
+ }
+ 
+public static boolean op1(){
+      if ("+".equals(input[i])){
+         i++;
+          return true;
+          
+      }
+      else if ("-".equals(input[i])){
+          i++;
+          return true;
+      
+      }
+      else return false;
+  }
+ public static boolean E1(){
+      if(op1()){
+          if(T()){
+              if(E1()){
+                  return true;
+              }
+          }
+      }
+      else return true;
+      return false;
+      
+  }
+ public static boolean E(){
+      if(T()){
+      if (E1()){
+          return true;
+          }
+      }
+      return false;
+  }
+ 
+    public static void main(String[] args) {
+           Scanner sc= new Scanner(System.in);
+        String x=sc.next()+"$";
+        input=x.split("");
+        
+        for(String a: input){
+        System.out.println(a);
+        }
+      
+       if (E()){
+       if("$".equals(input[i])){
+            System.out.println(input[i]);
+       System.out.println("valid");
+       }  else{
+       System.out.println("invalid");
+       }
+      
+       }
+       else{
+       System.out.println("invalid");
+       }
+    
+    }
+    
+}

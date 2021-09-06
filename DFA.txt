@@ -1,0 +1,62 @@
+package javaapplication3;
+import java.util.Scanner;
+
+
+class DeterministicAutomata{
+    int[][] Transition_table ;
+    int NumOf_states ;
+    int [] Final_state;
+ DeterministicAutomata(int states, int table[][], int [] finalStates){
+     this.Transition_table = table;
+     this.NumOf_states = states;
+     this.Final_state = finalStates;
+}
+public int transition(int currentState, String ch){
+  String input_char[] = {"a","b"};
+        
+        int i = 0;
+        while (i < input_char.length) {
+            if (ch.equals(input_char[i]))  {
+                return this.Transition_table[currentState][i];
+            }
+            i++;
+        }   
+        return -1;
+}
+
+ boolean isValid(String Input, int initail_state) {
+        int Current_state = initail_state;
+        String Input_Array[] = Input.split("");
+        for (String i : Input_Array) {
+            Current_state = transition(Current_state, i);
+        }
+        for(int i : Final_state){
+       if( Current_state == this.Final_state[i])
+       {
+       System.out.print("valid");
+           
+           return true;
+       }
+        }
+        
+        return false;
+    }
+
+}
+public class JavaApplication3 {
+   
+    
+  
+ 
+    public static void main(String[] args) {
+        int [][] Transitons = {{1,3}, {0,2}, {3,1 }, {2, 0}};
+        int [] finalStates={0};
+        
+        DeterministicAutomata DFA_EVENEVEN = new DeterministicAutomata (4 , Transitons, finalStates);
+      DFA_EVENEVEN.isValid("aabb",0);
+        
+    }
+    
+}
+
+
